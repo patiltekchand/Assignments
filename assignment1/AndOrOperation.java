@@ -3,10 +3,12 @@ import java.util.Scanner;
 class AndOrOperation
 {
 	Scanner sc;
+	
 	public void acceptArray()
 	{
 		int firstArray[][]=new int [100][100];
 		int secondArray[][]=new int[100][100];
+
 		sc=new Scanner();
 		int innerLoop,outerLoop,rows,column;
 		System.out.println("Enter the rows");
@@ -33,14 +35,46 @@ class AndOrOperation
 				secondArray[outerLoop][innerLoop]=sc.nextInt();
 			}
 		}
-
+			//AndOrOperation operation=new AndOrOperation();
+			AndOperation(firstArray,secondArray,rows,column);
 
 
 
 	}
-			public void AndOROperation(int firstArray[][],int secondArray[][])
+			public void AndOperation(int firstArray[][],int secondArray[][],int rows,int column)
+			{
+				int innerLoop,outerLoop;
+				int resultArray[][]=new int[100][100];
+				System.out.println("enter in and");
+				for(outerLoop=0;outerLoop<rows;outerLoop++)
+				{
+					for(innerLoop=0;innerLoop<column;innerLoop++)
+					{
+						resultArray[outerLoop][innerLoop]=firstArray[outerLoop][innerLoop] && secondArray[outerLoop][innerLoop];
+						
+					}
+				}
 
+				//	AndOrOperation operation=new AndOrOperation();
+					AndOperation(resultArray,firstArray,rows,column);
 
+			}
+
+			public void AndOrOperation(int resultArray[][],int firstArray[][],int rows,int column)
+			{
+
+				int singleArray[]=new int[100];
+				int outerLoop,innerLoop;
+
+				for(outerLoop=0;outerLoop<rows;outerLoop++)
+				{
+					for(innerLoop=0;innerLoop<column;innerLoop++)
+					{
+						singleArray[innerLoop]=resultArray[outerLoop][innerLoop] || firstArray[outerLoop][innerLoop];
+						
+					}
+				}
+			}
 
 
 

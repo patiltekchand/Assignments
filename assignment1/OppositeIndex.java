@@ -7,7 +7,7 @@ class OppositeIndex
 	{
 		Scanner sc=new Scanner(System.in);
 		int a[][]=new int[100][100];
-		int i,j,sum=0,m,n,count=0,k,total=0,digit=0,odd=0;
+		int i,j,sum=0,m,n,k,total=0,digit=0,is_prime=0;
 
 		System.out.println("Enter the rows");
 		m=sc.nextInt();
@@ -29,19 +29,24 @@ class OppositeIndex
 		{
 			for(j=1;j<=n;j++)
 			{
-				count=0;
+				is_prime=0;
 				sum=a[i][j]+a[j][i];
 				//odd=sum;
 
-				for(k=2;k<=sum;k++)
+				for(k=2;k<=sum/2;k++)
 				{
 					if(sum%k==0)
 					{
-						count++;
+						is_prime=1;
+						break;
+					}
+					else
+					{
+						continue;
 					}
 
 				}
-				if(count==1)
+				if(is_prime==0)
 				{
 					total=0;
 					
@@ -50,14 +55,14 @@ class OppositeIndex
 						digit=sum%10;
 						sum=sum/10;
 						total=total+digit;
-						odd=total;
+						//odd=total;
 						//System.out.println(odd);
 
 					}
 
 					if(total%2==1)
 					{
-						System.out.println("Number is prime="+a[i][j]+a[j][i]+" "+"sum of digit is odd="+odd);
+						System.out.println("Number is prime="+a[i][j]+" "+a[j][i]+" "+"sum of digit is odd="+total);
 					}
 
 
