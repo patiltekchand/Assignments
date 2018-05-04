@@ -20,7 +20,7 @@ class RandomElements
 		{
 			
 			array_element[innerLoop]=sc.nextInt();
-			
+			array_repeat[innerLoop]=-1;
 		}
 
 		repeatedTimes=sizeOfArray/randomNumber;
@@ -32,25 +32,41 @@ class RandomElements
 
 			for(innerLoop=outerLoop+1;innerLoop<sizeOfArray;innerLoop++)
 			{
-				if(array_element[outerLoop]==array_element[innerLoop])
-				{
-					
-					
-					countRepeat++;
-					
-				}
+					if(array_element[outerLoop]==array_element[innerLoop])
+					{
+						
+							array_repeat[innerLoop]=0;
+							countRepeat++;
+						
+					}
 
 			}
+				if(array_repeat[outerLoop]!=0)
+				{
+						array_repeat[outerLoop]=countRepeat;
+				}
 
-				if(countRepeat>=repeatedTimes)
+			/*	if(countRepeat>=repeatedTimes)
 				{
 
 						System.out.println(array_element[outerLoop]+" is element of array which appears sizeOfArray/randomNumber");
 						System.out.println(countRepeat+"times");
-				}
+				}*/
 		}
 			
-				
+				for(outerLoop=0;outerLoop<sizeOfArray;outerLoop++)
+				{
+
+						if(array_repeat[outerLoop]!=0)
+						{
+								if(array_repeat[outerLoop]>=repeatedTimes)
+								{
+										System.out.println(array_element[outerLoop]+" is element of array which appears sizeOfArray/randomNumber");
+										System.out.println(array_repeat[outerLoop]+"times");
+								}
+
+						}
+				}
 				
 
 	}
