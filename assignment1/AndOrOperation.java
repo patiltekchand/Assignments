@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 class AndOrOperation
 {
-	Scanner sc;
+	Scanner sc=new Scanner(System.in);
 	
 	public void acceptArray()
 	{
 		int firstArray[][]=new int [100][100];
 		int secondArray[][]=new int[100][100];
 
-		sc=new Scanner();
+		
 		int innerLoop,outerLoop,rows,column;
 		System.out.println("Enter the rows");
 		rows=sc.nextInt();
@@ -50,13 +50,13 @@ class AndOrOperation
 				{
 					for(innerLoop=0;innerLoop<column;innerLoop++)
 					{
-						resultArray[outerLoop][innerLoop]=firstArray[outerLoop][innerLoop] && secondArray[outerLoop][innerLoop];
-						
+						resultArray[outerLoop][innerLoop]=firstArray[outerLoop][innerLoop] & secondArray[outerLoop][innerLoop];
+						System.out.println(resultArray[outerLoop][innerLoop]);
 					}
 				}
 
 				//	AndOrOperation operation=new AndOrOperation();
-					AndOperation(resultArray,firstArray,rows,column);
+					//AndOperation(resultArray,firstArray,rows,column);
 
 			}
 
@@ -70,7 +70,7 @@ class AndOrOperation
 				{
 					for(innerLoop=0;innerLoop<column;innerLoop++)
 					{
-						singleArray[innerLoop]=resultArray[outerLoop][innerLoop] || firstArray[outerLoop][innerLoop];
+						singleArray[innerLoop]=resultArray[outerLoop][innerLoop] | firstArray[outerLoop][innerLoop];
 						
 					}
 				}
