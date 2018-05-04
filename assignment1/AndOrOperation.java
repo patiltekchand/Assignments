@@ -45,7 +45,7 @@ class AndOrOperation
 			{
 				int innerLoop,outerLoop;
 				int resultArray[][]=new int[100][100];
-				System.out.println("enter in and");
+			  System.out.println("And Operation is:");
 				for(outerLoop=0;outerLoop<rows;outerLoop++)
 				{
 					for(innerLoop=0;innerLoop<column;innerLoop++)
@@ -56,7 +56,7 @@ class AndOrOperation
 				}
 
 				//	AndOrOperation operation=new AndOrOperation();
-					//AndOperation(resultArray,firstArray,rows,column);
+					AndOrOperation(resultArray,firstArray,rows,column);
 
 			}
 
@@ -65,15 +65,61 @@ class AndOrOperation
 
 				int singleArray[]=new int[100];
 				int outerLoop,innerLoop;
-
+				int len=0;
+				System.out.println("OR Operation is:");
 				for(outerLoop=0;outerLoop<rows;outerLoop++)
 				{
 					for(innerLoop=0;innerLoop<column;innerLoop++)
 					{
-						singleArray[innerLoop]=resultArray[outerLoop][innerLoop] | firstArray[outerLoop][innerLoop];
-						
+						singleArray[len]=resultArray[outerLoop][innerLoop] | firstArray[outerLoop][innerLoop];
+						System.out.println(singleArray[len]);
+						len++;
 					}
 				}
+
+					decimalOperation(singleArray);
+
+			}
+
+			public void decimalOperation(int singleArray[])
+			{
+					int len;
+					int singleArraylen=0;
+					int decimal=0;
+					int lengthOf=singleArray.length;
+					System.out.println("Decimal is:");
+					for(len=0;len<lengthOf;len++)
+					{
+						
+								
+							decimal +=singleArray[len]*Math.pow(2, singleArraylen);
+							singleArraylen++;
+
+					}
+					System.out.println(decimal);
+					checkPrime(decimal);
+
+			}
+
+			public void checkPrime(int decimal)
+			{
+					int outerLoop,is_prime=0;
+					for(outerLoop=2;outerLoop<decimal/2;outerLoop++)
+					{
+							if(decimal%outerLoop==0)
+							{
+									is_prime=1;
+									break;
+							}
+							else
+							{
+									continue;
+							}
+					}
+							if(is_prime==0)
+							{
+									System.out.println("is_prime\n"+decimal);
+							}
 			}
 
 
