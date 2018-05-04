@@ -1,9 +1,11 @@
 #!/bin/bash
-echo "please enter folder name"
+MSG1="please enter folder name"
+echo $MSG1
 
 read folder
 
-echo "please enter the number of text files creating" 
+MSG2="please enter the number of text files creating"
+echo $MSG2 
 read number
 len=${#folder}
 mkdir $folder
@@ -30,11 +32,18 @@ do
 done
  
 cd $revfolder
-
+path="$PWD"
  rm -r $folder/*
+#echo "$path"
 
+cd /
 
+sudo adduser devops
 
+sudo chown -R devops:devops $path
+sudo chmod -R 755 $path
+cd "$path"
+ls
 
 
 
