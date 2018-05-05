@@ -1,0 +1,271 @@
+
+
+Common Feature
+
+	Signup
+	Login
+------------------------------------------------------------------------------
+i. General User area
+		
+	
+		
+				Appointment(doctor)
+						Types_of_doctor
+						Doctors_review
+						Doctors_Location
+						Treatment_type
+
+
+----------------------------------------------------------------------------------
+
+ii. Doctor’s area
+
+
+			(Accept_and_reject_appointment_and_message)
+			Patient_count(todays)
+
+
+----------------------------------------------------------------------------------			
+		
+
+iii. Patient’s area
+			
+				Types_of_dises
+				next_appointment(for yes or not)
+				previous_history_of_billing and dieases
+				
+				Symptoms
+-------------------------------------------------------------------------------------
+
+iv. Transaction/Billing area
+			Billing_type(transaction type)
+			History_Maintain(billing and dises and mdecine details)
+
+--------------------------------------------------------------------------------------
+v. Administrator area
+			adding doctors
+			adding city
+			adding types of pharmacy
+			adding symtoms,etc
+			List of doctors in Pune city who has 4.5 to 5 rating, sort rating wise.
+			List of Doctors who have canceled appointments more than 30% times
+		  Patients count per Symptom, monthwise
+		  How Many Appointments(today)
+
+			
+--------------------------------------------------------------------------------------			
+
+vi. Pharmacy area
+			Pharmacy_suggestion
+			Contents
+			Price_Of_contents
+
+
+
+--------------------------------------------------------------------------------------
+vii. Insurance area
+				Insurance_suggestion
+				Types_of_insurance
+
+				
+
+--------------------------------------------------------------------------------------
+																			Tables and Fields
+--------------------------------------------------------------------------------------
+
+
+
+user  							(All users)
+		id
+		user_name
+		password
+		user_type_id
+		address_id
+		registerd_date(user)
+		personal_id
+
+types_of_user       (user type like general,admin,etc) 
+		id
+		user_type
+
+pesrsonal_details   (personal details of all users)
+		id
+		fname
+		mname
+		lname
+		blood_group
+		dob
+		mobno
+		email
+
+address_id  				(address oof all users)
+		id
+		area_name
+		flat_no
+		city_id
+		country_id
+		state_id
+
+
+country
+		id
+		country_name
+
+
+state 						  (All state depend on country)
+		id
+		state_name
+		country_id
+
+
+
+city_id 						(All cities depend on state)
+		id
+		city_name
+		state_id
+
+
+diseases               (Diseases names)
+		id
+		diseases_name
+
+
+
+symtoms 								(Symtoms of diseases(it depends on diseases_id))
+		id
+		symtom_description
+		diseases_id	
+		specialization_id
+
+
+	
+doctor_specialization_of_treatments				(Doctor specialization)
+		id
+		treatment_name
+
+
+doctors_names 								(Doctors names and it depends on specialization_id)
+		id
+		doctor_name
+		specialization_id
+		city_id
+
+
+
+doctor_reviews    			(patient given ratings to doctors)
+		id
+		user_id
+		doctor_id
+		description
+		rating
+
+
+user_diseases   
+		id
+		user_id
+		diseases_id
+
+
+appointments       			(user appointment booking)
+		id
+		appointment_date
+		appointment_description
+		user_id(create user appointment)
+		status_id
+		doctor_id(for appoint doctor)
+
+
+
+appointment_status    (Accpet and reject)
+		id
+		appoint_status
+
+
+
+doctor_cancel_appointment			(For cancel appointment)
+		id
+		doctor_id 
+		description
+		status_id
+		staus_updated_date
+
+
+
+doctors_fees 						(Doctor fees it depends on doctor_id)
+		id
+		fees_amount
+		doctor_id
+
+
+patient_billing 				(Patient bill values)
+		id
+		user_id
+		disease_id
+		symtom_id
+		bill_amount
+		bill_date
+	
+
+
+types_of_bill_payment 		(Bill payment types online,offline,paytm)
+		id
+		bill_type
+
+
+types_of_bank 						(Bank types state,cental,etc)
+		id
+		bank_type
+
+bank_names 								(Bank names it depends on bank_id)
+		id
+		bank_name
+		bank_type_id
+
+account_details 					(User account details it depends on bank_name_id and user_id)
+		id
+		account_no
+		account_type
+		bank_name_id
+		branch_name
+		ifsc_code
+		user_id
+
+
+patient_bill_payment       (Patient bill paid details)
+		id
+		bill_type_id
+		bank_id
+		amount_paid
+		bill_paid_date
+		user_id
+		bill_id(patient_billing)
+		is_bill_paid(true or false)
+		account_id
+
+
+
+types_of_pharmacy        (Pharmacy types hospital pharmacy,community pharmacy,etc)
+		id
+		pharmacy_type
+		
+
+pharmacy_names 					 (Pharmacy names in particular city user can search)
+		id
+		pharmacy_name
+		pharmacy_type_id
+		city_id
+
+
+pharmacy_medicine_details 		(Pharmacy medicine details it depends on pharmacy_name)
+		id
+		medicine_name
+		pharmacy_name_id
+
+
+health_insurance_name      (Health insurance types)
+		id
+		insurance_name
+
+
+
+
