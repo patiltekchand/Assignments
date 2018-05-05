@@ -33,7 +33,7 @@ done
  
 cd $revfolder
 path="$PWD"
- rm -r $folder/*
+rm -rf $folder
 #echo "$path"
 
 cd /

@@ -6,15 +6,17 @@ class AndOrOperation
 	
 	public void acceptArray()
 	{
-		int firstArray[][]=new int [100][100];
-		int secondArray[][]=new int[100][100];
-
-		
 		int innerLoop,outerLoop,rows,column;
 		System.out.println("Enter the rows");
 		rows=sc.nextInt();
 		System.out.println("Enter the columns");
 		column=sc.nextInt();
+
+		int firstArray[][]=new int[rows][column];
+		int secondArray[][]=new int[rows][column];
+
+		
+		
 		
 		System.out.println("Enter the 1st 2d array");
 
@@ -44,7 +46,7 @@ class AndOrOperation
 			public void AndOperation(int firstArray[][],int secondArray[][],int rows,int column)
 			{
 				int innerLoop,outerLoop;
-				int resultArray[][]=new int[100][100];
+				int resultArray[][]=new int[rows][column];
 			  System.out.println("And Operation is:");
 				for(outerLoop=0;outerLoop<rows;outerLoop++)
 				{
@@ -62,8 +64,8 @@ class AndOrOperation
 
 			public void AndOrOperation(int resultArray[][],int firstArray[][],int rows,int column)
 			{
-
-				int singleArray[]=new int[100];
+				int lengthOf=rows*column;
+				int singleArray[]=new int[lengthOf];
 				int outerLoop,innerLoop;
 				int len=0;
 				System.out.println("OR Operation is:");
@@ -72,8 +74,14 @@ class AndOrOperation
 					for(innerLoop=0;innerLoop<column;innerLoop++)
 					{
 						singleArray[len]=resultArray[outerLoop][innerLoop] | firstArray[outerLoop][innerLoop];
-						System.out.println(singleArray[len]);
-						len++;
+						//System.out.println(singleArray[len]);
+						
+						//if(innerLoop<=(column-1))
+						{
+							
+							len++;
+						
+						}
 					}
 				}
 

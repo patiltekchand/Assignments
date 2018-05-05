@@ -5,12 +5,11 @@ class RandomElements
 	public static void main(String[] args)
 	{
 		Scanner sc=new Scanner(System.in);
-		int array_element[]=new int [100];
-		int array_repeat[]=new int [100];
-		
 		int sizeOfArray,randomNumber,repeatedTimes,innerLoop,outerLoop,countRepeat=0;
 		System.out.println("Enter the size of array");
 		sizeOfArray=sc.nextInt();
+		int array_element[]=new int [sizeOfArray];
+		int array_repeat[]=new int [sizeOfArray];
 		System.out.println("Enter the Random number");
 		randomNumber=sc.nextInt();
 		
