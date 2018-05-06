@@ -256,7 +256,11 @@ medicine
     id                                      (int)  pk
     name                                    (varchar2(40))
 
-
+medicine_time
+    id                                      (int)  pk
+    morning                                 (varchar2(10))
+    afternoon                               (varchar2(10))
+    night
 
 
 
