@@ -5,7 +5,7 @@ echo $MSG1
 read folder
 
 MSG2="please enter the number of text files creating"
-echo $MSG2 
+echo $MSG2
 read number
 len=${#folder}
 mkdir $folder
@@ -15,22 +15,22 @@ do
     touch $folder$i
 done
 
-zip -r $folder.zip * 
+zip -r $folder.zip *
 
 for (( i=$len-1; i>=0; i-- ))
-do 
+do
 	revfolder="$revfolder${folder:$i:1}"
 done
- 
+
 mkdir $revfolder
 
 unzip $folder.zip -d $revfolder/$folder
 
 for ((i=1; i<=$number; i++))
 do
-    cp  $folder$i $revfolder 
+    mv  $folder$i $revfolder
 done
- 
+
 cd $revfolder
 path="$PWD"
 rm -rf $folder
