@@ -1,19 +1,16 @@
-
+import java.util.Scanner;
 class TowerOfHanoi
 {
-	
+
 		class Stack
 		{
-
 				int stackSize;
 				int stackTop;
 				int stackArray[];
-
-
 		}
 
 
-		stack createStack(int noOfDisk)
+		Stack createStack(int noOfDisk)
 		{
 		 		Stack stackCreated=new Stack();
 
@@ -25,59 +22,57 @@ class TowerOfHanoi
 		}
 
 
+		boolean isEmptyStack(Stack begin)
+		{
+			  return (begin.stackTop==-1);
+		}
+
 		boolean isFullStack(Stack begin)
 		{
 				return(begin.stackTop==begin.stackSize-1);
 		}
 
-		void pushElement(Stack begin,int tohIteration)
+		int popElement(Stack begin)
+		{
+					if(isEmptyStack(begin))
+					{
+
+							return -3;
+					}
+
+					 return begin.stackArray[begin.stackTop--];
+
+		}
+
+		void pushElement(Stack begin,int element)
 		{
 
 				if(isFullStack(begin))
 				{
+					System.out.println("Stack is full");
 						return;
 				}
-
-				begin.array[++begin.stackTop] = tohIteration;
-
+      //  System.out.println(noOfElements);
+				begin.stackArray[++begin.stackTop] = element;
 		}
 
-
-
-
-		void TowerOfHanoiIteration(int noOfDisk,Stack begin,Stack middle,Stack end)
+		public static void main(String[] args)
 		{
-				int noOfMoves,tohIteration;
+				Scanner sc=new Scanner(System.in);
+				System.out.println("Enter the number of Disk");
+				int noOfDisk=sc.nextInt();
+
+				TowerOfHanoi tower=new TowerOfHanoi();
+				Stack begin,middle,end;
+
+				begin=tower.createStack(noOfDisk);
+				tower.pushElement(begin,noOfDisk);
+				tower.popElement(begin);
 
 
-
-				for(tohIteration=noOfDisk;tohIteration>=1;tohIteration--)
-				{
-					  pushElement(begin,tohIteration);
-				}
-
-				for()
 
 		}
 
 
-public static void main(String[] args)
-{
-		Scanner sc=new Scanner(Systm.in);
-		System.out.println("Enter the number of Disk");
-		int noOfDisk=sc.nextInt();
-
-		TowerOfHanoi tower=new TowerOfHanoi();
-		Stack begin,middle,end;
-		
-		begin=tower.createStack(noOfDisk);
-		middle=tower.createStack(noOfDisk);
-		end=tower.createStack(noOfDisk);
-
-		tower.TowerOfHanoiIteration(noOfDisk,begin,middle,end);
-
-
-
-}
 
 }
