@@ -2,6 +2,9 @@ import java.util.Scanner;
 class TowerOfHanoi
 {
 
+	final	int EMPTY_STACK=-3;
+	final int TOP=-1;
+
 		class Stack
 		{
 				int stackSize;
@@ -15,7 +18,7 @@ class TowerOfHanoi
 				 		Stack stackCreated = new Stack();
 
 				 		stackCreated.stackSize = noOfDisk;
-				 		stackCreated.stackTop = -1;
+				 		stackCreated.stackTop = TOP;
 				 		stackCreated.stackArray = new int[noOfDisk];
 
 				 		return stackCreated;
@@ -24,7 +27,7 @@ class TowerOfHanoi
 
 				boolean isEmptyStack(Stack begin)
 				{
-					  return (begin.stackTop == -1);
+					  return (begin.stackTop == TOP);
 				}
 
 				boolean isFullStack(Stack begin)
@@ -37,60 +40,66 @@ class TowerOfHanoi
 							if(isEmptyStack(begin))
 							{
 
-									return -3;
+									return EMPTY_STACK;
 							}
 
 					 return begin.stackArray[begin.stackTop--];
 
 				}
 
-				void pushElement(Stack begin,int element)
+				void pushElement(Stack begin, int element)
 				{
 
 						if(isFullStack(begin))
 						{
 							System.out.println("Stack is full");
-								return;
+
 						}
-
-						begin.stackArray[++begin.stackTop] = element;
-
+						else
+						{
+								begin.stackArray[++begin.stackTop] = element;
+					  }
 				}
 
 
-	void TowerOfHanoiIteration(int noOfDisk,Stack begin,Stack middle,Stack end)
+	void TowerOfHanoiIteration(int noOfDisk, Stack begin, Stack middle, Stack end)
 		{
 				int totalnoOfMoves,tohIteration;
 
 
          char s = 'S',e = 'E',m = 'M';
 
-        if (noOfDisk%2 == 0)
+        if (noOfDisk % 2 == 0)
         {
             char temp = e;
             e = m;
             m = temp;
         }
 
-        totalnoOfMoves=(int)(Math.pow(2, noOfDisk)-1);
+        totalnoOfMoves=(int)(Math.pow(2, noOfDisk) - 1);
 
 				for(tohIteration = noOfDisk;tohIteration >= 1;tohIteration--)
 				{
 					  pushElement(begin,tohIteration);
+					//  System.out.println(tohIteration);
 				}
 
 				 for (tohIteration = 1;tohIteration <= totalnoOfMoves; tohIteration++)
         {
-            if (tohIteration %3 == 1)
+            if (tohIteration % 3 == 1)
             {
               moveDisksBetweenTwoPoles(begin, end, s, e);
             }
 
             else if (tohIteration % 3 == 2)
+            {
               moveDisksBetweenTwoPoles(begin, middle, s, m);
+            }
 
             else if (tohIteration % 3 == 0)
+            {
               moveDisksBetweenTwoPoles(middle, end, m, e);
+            }
         }
 
 		}
@@ -107,14 +116,17 @@ class TowerOfHanoi
         int pole1TopDisk = popElement(begin);
         int pole2TopDisk = popElement(end);
 
+        System.out.println("pole1TopDisk Element \n" + pole1TopDisk);
+        System.out.println("pole2TopDisk Element \n" + pole2TopDisk);
 
-        if (pole1TopDisk == -3)
+
+        if (pole1TopDisk == EMPTY_STACK)
         {
             pushElement(begin, pole2TopDisk);
             moveDisk(e, s, pole2TopDisk);
         }
 
-        else if (pole2TopDisk == -3)
+        else if (pole2TopDisk == EMPTY_STACK)
         {
             pushElement(end, pole1TopDisk);
             moveDisk(s, e, pole1TopDisk);
@@ -145,14 +157,16 @@ class TowerOfHanoi
 					int noOfDisk=sc.nextInt();
 
 					TowerOfHanoi tower=new TowerOfHanoi();
-					Stack begin,middle,end;
+					Stack begin , middle , end;
 
 					begin = tower.createStack(noOfDisk);
 					middle= tower.createStack(noOfDisk);
 					end = tower.createStack(noOfDisk);
 
-					tower.TowerOfHanoiIteration(noOfDisk,begin,middle,end);
+					tower.TowerOfHanoiIteration(noOfDisk, begin, middle, end);
 
+					for(int i = noOfDisk - 1;i >= 0;i--)
+					System.out.println(end.stackArray[i]);
 
 
 			}
